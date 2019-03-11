@@ -33,7 +33,16 @@ submit.on("click", function() {
   tbody.selectAll("tr").remove();
 
   // populate the table with the filtered data
-  populateTable(filteredData);
+  if(filteredData.length != 0)
+  {
+    d3.select("#error").text("");
+    populateTable(filteredData);
+  }
+  else
+  {
+    console.log("No data to filter.");
+    d3.select("#error").text("No search results obtained");
+  }
 });
 
 
